@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css';
+import { Header } from './components/Header'
+import Search from './components/Search'
+const App = () => {
+  const [books, setBooks] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [bookSearch, setBookSearch] = useState('')
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const config = {
+        method: 'get',
+        url: `https://reststop.randomhouse.com/resources/titles/?start=0&max=1&expandLevel=1&title=${bookSearch}`,
+        headers: {
+          Accept: 'application/json'
+        }
+      }
+      const result = await axios(config)
+      console.log(result.data)
+    }
+    fetchBooks()
+  }, [bookSearch]);
 
-function App() {
+  const searchBook = (book) => {
+    console.log(book)
+    setBookSearch(book)
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header />
+      <Search onSearch={searchBook} />
+      <img src="https://reststop.randomhouse.com/resources/titles/9780141330136" />
+
     </div>
   );
 }
