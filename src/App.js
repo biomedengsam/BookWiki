@@ -3,23 +3,32 @@ import axios from 'axios'
 import './App.css';
 import { Header } from './components/Header'
 import Search from './components/Search'
+import BooksGrid from './components/BooksGrid';
+
 const App = () => {
   const [books, setBooks] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [bookSearch, setBookSearch] = useState('')
+  // const [bookImg, setBookImage] = useState('')
   useEffect(() => {
-    const fetchBooks = async () => {
-      const config = {
-        method: 'get',
-        url: `https://reststop.randomhouse.com/resources/titles/?start=0&max=1&expandLevel=1&title=${bookSearch}`,
-        headers: {
-          Accept: 'application/json'
+    if (bookSearch !== '') {
+      setIsLoading(true)
+      const fetchBooks = async () => {
+        const config = {
+          method: 'get',
+          url: `https://reststop.randomhouse.com/resources/titles/?start=0&max=12&expandLevel=1&title=${bookSearch}`,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
         }
+        const result = await axios(config)
+        setBooks(result.data.title)
+        setIsLoading(false)
+        console.log(result.data.title)
       }
-      const result = await axios(config)
-      console.log(result.data)
+      fetchBooks()
     }
-    fetchBooks()
   }, [bookSearch]);
 
   const searchBook = (book) => {
@@ -32,8 +41,8 @@ const App = () => {
     <div className="container">
       <Header />
       <Search onSearch={searchBook} />
-      <img src="https://reststop.randomhouse.com/resources/titles/9780141330136" />
-
+      {books !== [] ? <BooksGrid isLoading={isLoading} books={books} /> : ''}
+      {/* <img src="https://reststop.randomhouse.com/resources/titles/9780141330136" /> */}
     </div>
   );
 }
