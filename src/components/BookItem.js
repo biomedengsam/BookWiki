@@ -11,17 +11,20 @@ const BookItem = ({ book }) => {
                     <h1>{book.titleweb}</h1>
                     <ul>
                         <li>
-                            <strong>Author Name:</strong> {book.author}
-                        </li>
-                        {/* <li>
-                            <strong>Nickname:</strong> {item.nickname}
+                            <strong>Author Name:</strong> {book.authorweb}
                         </li>
                         <li>
-                            <strong>Birthday:</strong> {item.birthday}
+                            <strong>Category:</strong> {book.subjectcategorydescription1}
                         </li>
                         <li>
-                            <strong>Status:</strong> {item.status}
-                        </li> */}
+                            <strong>Pages:</strong> {book.pages}
+                        </li>
+                        <li>
+                            <strong>Price In USA: </strong> {`${book.priceusa} $`}
+                        </li>
+                        <li>
+                            <strong>Price In Canada: </strong>{`${book.pricecanada} $`}
+                        </li>
                     </ul>
                 </div>
             </div>

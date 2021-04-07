@@ -4,12 +4,13 @@ import './App.css';
 import { Header } from './components/Header'
 import Search from './components/Search'
 import BooksGrid from './components/BooksGrid';
-import BookNotfound from './components/BookNotFound'
+
 
 const App = () => {
   const [books, setBooks] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [bookSearch, setBookSearch] = useState('')
+
   // const [bookFound, setBookFound] = useState(true)
   useEffect(() => {
     // console.log(books.length)
@@ -32,9 +33,14 @@ const App = () => {
           setBooks(result.data.title)
           setIsLoading(false)
         } else {
-          setBooks([])
-          // setBookFound(false)
-          setIsLoading(false)
+          function notFound() {
+            setIsLoading(false)
+            setBooks([])
+
+            return alert('Book Not Found')
+          }
+          notFound();
+
         }
 
         // console.log(result.data.title)
@@ -52,7 +58,7 @@ const App = () => {
     <div className="container">
       <Header />
       <Search onSearch={searchBook} />
-      <BooksGrid isLoading={isLoading} books={books} />
+      {books.length !== 0 && <BooksGrid isLoading={isLoading} books={books} />}
       {/* <img src="https://reststop.randomhouse.com/resources/titles/9780141330136" /> */}
     </div>
   );
