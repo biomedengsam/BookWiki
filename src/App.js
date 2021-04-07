@@ -4,13 +4,15 @@ import './App.css';
 import { Header } from './components/Header'
 import Search from './components/Search'
 import BooksGrid from './components/BooksGrid';
+import BookNotfound from './components/BookNotFound'
 
 const App = () => {
   const [books, setBooks] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [bookSearch, setBookSearch] = useState('')
-  // const [bookImg, setBookImage] = useState('')
+  // const [bookFound, setBookFound] = useState(true)
   useEffect(() => {
+    // console.log(books.length)
     if (bookSearch !== '') {
       setIsLoading(true)
       const fetchBooks = async () => {
@@ -23,9 +25,19 @@ const App = () => {
           }
         }
         const result = await axios(config)
-        setBooks(result.data.title)
-        setIsLoading(false)
-        console.log(result.data.title)
+        console.log(result.data);
+        console.log(result.data.hasOwnProperty('title'));
+        if (result.data.hasOwnProperty('title')) {
+          // setBookFound(true)
+          setBooks(result.data.title)
+          setIsLoading(false)
+        } else {
+          setBooks([])
+          // setBookFound(false)
+          setIsLoading(false)
+        }
+
+        // console.log(result.data.title)
       }
       fetchBooks()
     }
@@ -36,12 +48,11 @@ const App = () => {
     setBookSearch(book)
   }
 
-
   return (
     <div className="container">
       <Header />
       <Search onSearch={searchBook} />
-      {books !== [] ? <BooksGrid isLoading={isLoading} books={books} /> : ''}
+      <BooksGrid isLoading={isLoading} books={books} />
       {/* <img src="https://reststop.randomhouse.com/resources/titles/9780141330136" /> */}
     </div>
   );

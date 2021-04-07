@@ -5,7 +5,7 @@ const BookItem = ({ book }) => {
         <div className='card'>
             <div className='card-inner'>
                 <div className='card-front'>
-                    <img src={`https://reststop.randomhouse.com/resources/titles/${book.isbn}`} alt='Book image' />
+                    <img src={`https://reststop.randomhouse.com/resources/titles/${book.isbn}`} alt='Book' />
                 </div>
                 <div className='card-back'>
                     <h1>{book.titleweb}</h1>
