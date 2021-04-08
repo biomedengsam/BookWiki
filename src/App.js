@@ -4,6 +4,7 @@ import './App.css';
 import { Header } from './components/Header'
 import Search from './components/Search'
 import BooksGrid from './components/BooksGrid';
+import Footer from './components/Footer'
 
 
 const App = () => {
@@ -60,6 +61,7 @@ const App = () => {
       <Search onSearch={searchBook} />
       {books.length !== 0 && <BooksGrid isLoading={isLoading} books={books} />}
       {/* <img src="https://reststop.randomhouse.com/resources/titles/9780141330136" /> */}
+      <Footer />
     </div>
   );
 }
