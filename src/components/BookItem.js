@@ -6,7 +6,7 @@ const BookItem = ({ book, details, id }) => {
     const [imageLoadError, setImageLoadError] = useState(true);
     // console.log(id);
     return (
-        <Link to='/details' onClick={() => details(id)}>
+        <Link to='/details' onClick={() => details(id, imageLoadError)}>
             <div className='card'>
                 <div className='card-inner'>
                     <div className='card-front'>

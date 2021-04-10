@@ -70,13 +70,13 @@ const App = () => {
   }
 
   // More details
-  const moreDetails = (id) => {
+  const moreDetails = (id, imageLoadError) => {
     console.log(id);
     // refactor
     const info = books.filter((book, index) => index === id)
-    setDetailedInfo(info[0])
+    setDetailedInfo({ ...info[0], imageLoadError })
     // console.log(info[0].author);
-    // console.log(detailedInfo);
+    console.log(detailedInfo);
 
   }
 
