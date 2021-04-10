@@ -131,6 +131,16 @@ button{
   padding-bottom: 10px;
 }
 
+.details{
+  display: flex;
+  /* gap:20px; */
+  justify-content: space-between;
+  /* align-content: space-between; */
+}
+
+.list {
+list-style-type: none;
+}
 
 footer {
   margin-top: 30px;
