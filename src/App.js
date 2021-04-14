@@ -28,19 +28,16 @@ const App = () => {
           }
         }
         const result = await axios(config)
-        // console.log(result.data);
         /* A sample of what the API returns 
         {"@uri":"https://reststop.randomhouse.com/resources/titles?start=0&max=2","title":[{"@uri":"http://reststop.randomhouse.com/resources/titles/9780736688567/"},{"@uri":"http://reststop.randomhouse.com/resources/titles/9780440422976/"}]
         so it always returns an object with @uri property and a title property only if the title is found
         the info in the title property is what we are interested in and will store the its info in our state
         */
-        console.log(result.data.hasOwnProperty('title'));
         // Check if the book title exists
         if (result.data.hasOwnProperty('title')) {
-          // setBookFound(true)
           setIsLoading(false)
-          // Titles data from the API call
 
+          // Titles data from the API call
           const titles = result.data.title
 
           /* Check if we only have one result it will return an object,if more than one 
@@ -72,13 +69,9 @@ const App = () => {
 
   // More details
   const moreDetails = (id, imageLoadError) => {
-    console.log(id);
-    // refactor
+    // console.log(id);
     const info = books.filter((book, index) => index === id)
     setDetailedInfo({ ...info[0], imageLoadError })
-    // console.log(info[0].author);
-    console.log(detailedInfo);
-
   }
 
   return (

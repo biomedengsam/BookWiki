@@ -7,9 +7,7 @@
 
 html,
 body {
-  /* background: #000 url('img/bg.jpg') no-repeat center center/cover; */
   height: 100vh;
-  /* color: #000; */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -55,21 +53,12 @@ input[type='text'] {
   display: block;
   padding: 10px;
   font-size: 20px;
-  /* border: 0; */
   border-radius: 5px;
   width: 60%;
   margin: auto;
   outline: none;
 }
 
-/* button{
-    margin:30px auto;
-    display:block;
-    padding: 10px;
-    font-size: 20px;
-    border-radius: 5px;
-   
-} */
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -134,15 +123,6 @@ input[type='text'] {
   display: flex;
   justify-content: space-between;
   padding: 20px 0;
- 
-
-}
-
-@media(max-width: 750px){
-  .details{
-    flex-direction: column;
-  }
-
 }
 
 .info{
@@ -173,6 +153,13 @@ footer {
   margin-top: 30px;
   text-align: center;
   padding: 20px;
+}
+
+@media(max-width: 750px){
+  .details{
+    flex-direction: column;
+  }
+
 }
 
 @media (max-width: 800px) {
