@@ -3,7 +3,7 @@ import BookItem from './BookItem'
 
 
 const BooksGrid = ({ books, isLoading, details }) => {
-    // console.log(books[0].author);
+
     return isLoading ? (
         <Spinner />
     ) :

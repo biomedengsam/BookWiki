@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import ReactHtmlParser from 'react-html-parser';
-import { useState } from 'react';
+import ReactHtmlParser from 'react-html-parser'
 import defaultImg from '../img/default.jpg'
 
 /* Had to use ReactHTMLParser which is A utility for converting HTML strings into React components.
@@ -8,23 +7,11 @@ the info about author bio is an HTML string that was not rendered as html on the
 
 const Details = ({ info }) => {
     const flapcopy = info.flapcopy;
-    // console.log(info);y
-    // const CheckForExcerpt = () => {
-    //     if (excerpt === undefined) {
-    //         // console.log('yok');
-    //         // setExcerpt(false)
-    //     }
-    // }
-
-    // CheckForExcerpt();
-    // setExcerpt(info.excerpt)
-    // console.log(excerpt);
-
     return (
         <section>
-            <Link to='/'>Go Back Home</Link>
+            <Link to='/' className='home'>Go Back Home</Link>
             <section className='details'>
-                <section>
+                <section className='info'>
                     <h1>{info.titleweb}</h1>
                     <ul className='list'>
                         <li>
@@ -43,7 +30,7 @@ const Details = ({ info }) => {
                             <strong>Author Name:</strong> {info.authorweb}
                         </li>
                         <li>
-                            <strong>Author Bio:</strong> <div>{ReactHtmlParser(info.authorbio)}</div>
+                            <strong>Author Bio:</strong><br /> <div>{ReactHtmlParser(info.authorbio)}</div>
                         </li>
                         {flapcopy &&
                             <li>

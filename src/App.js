@@ -15,7 +15,7 @@ const App = () => {
   const [detailedInfo, setDetailedInfo] = useState({})
 
   useEffect(() => {
-    // console.log(books.length)
+
     if (bookSearch !== '') {
       setIsLoading(true)
       const fetchBooks = async () => {
@@ -40,13 +40,15 @@ const App = () => {
           // setBookFound(true)
           setIsLoading(false)
           // Titles data from the API call
-          const titles = result.data.title
-          console.log(titles);
-          // titles.map((item, index) => {
-          //   item.id = index
-          // })
-          setBooks(titles)
 
+          const titles = result.data.title
+
+          /* Check if we only have one result it will return an object,if more than one 
+           it will return an array of objects.why this check In BooksGrid component if we get one result the books.map
+           will break the app because books will be an object not an array */
+
+          titles instanceof Array ? setBooks(titles) : setBooks([titles])
+          console.log(titles);
         } else {
           const notFound = () => {
             setIsLoading(false)
@@ -55,19 +57,18 @@ const App = () => {
             return alert('Book Not Found')
           }
           notFound();
-
         }
-
-        // console.log(result.data.title)
       }
       fetchBooks()
     }
   }, [bookSearch]);
+  console.log(books)
 
   const searchBook = (book) => {
     console.log(book)
     setBookSearch(book)
   }
+
 
   // More details
   const moreDetails = (id, imageLoadError) => {
@@ -84,7 +85,6 @@ const App = () => {
     <Router>
       <div className="container">
         <Header />
-        {/* <img src="https://reststop.randomhouse.com/resources/titles/9780141330136" /> */}
         <Route path='/' exact render={(props) => (
           <>
             <Search onSearch={searchBook} />

@@ -5,17 +5,17 @@ const Search = ({ onSearch }) => {
     //search for book
     const onClick = (e) => {
         e.preventDefault();
-        if(!book){
-           alert('Please provide a book name to search for')
-           return
+        if (!book) {
+            alert('Please provide a book name to search for')
+            return
         }
         onSearch(book)
         setBook('');
     }
     return (
         <form>
-            <input type="text" value = {book} onChange={(e) => setBook(e.target.value)} placeholder='Enter book title to search' />
-            <button onClick={(e) => onClick(e)}>Search</button>
+            <input type="text" value={book} onChange={(e) => setBook(e.target.value)} placeholder='Enter book title to search' />
+            <button className='btn' onClick={(e) => onClick(e)}>Search</button>
         </form>
     )
 }
