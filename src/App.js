@@ -18,6 +18,7 @@ const App = () => {
 
     if (bookSearch !== '') {
       setIsLoading(true)
+//The Api returns data in differnet type. used config to specifiy the recived data json type data
       const fetchBooks = async () => {
         const config = {
           method: 'get',
