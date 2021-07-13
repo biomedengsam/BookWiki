@@ -21,7 +21,7 @@ const App = () => {
       const fetchBooks = async () => {
         const config = {
           method: 'get',
-          url: `https://reststop.randomhouse.com/resources/titles/?start=0&max=12&expandLevel=1&title=${bookSearch}`,
+          url: `https://reststop.randomhouse.com/resources/titles/?start=0&max=100&expandLevel=1&title=${bookSearch}`,
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
