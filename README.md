@@ -1,6 +1,6 @@
 # Wiki Books 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).This project lets the user search for books and find the details and price of the desired book using [Penguin Random House Rest Services API](http://www.penguinrandomhouse.biz/webservices/rest/)
+This project lets the user search for books and find the details and price of the desired book using [Penguin Random House Rest Services API](http://www.penguinrandomhouse.biz/webservices/rest/)
 
 ## Available Scripts
 
