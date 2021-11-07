@@ -18,7 +18,7 @@ const App = () => {
 
     if (bookSearch !== '') {
       setIsLoading(true)
-//The Api returns data in differnet type. used config to specifiy the recived data json type data
+      //The Api returns data in different type. used config to specify the received data json type data
       const fetchBooks = async () => {
         const config = {
           method: 'get',
@@ -46,7 +46,7 @@ const App = () => {
            will break the app because books will be an object not an array */
 
           titles instanceof Array ? setBooks(titles) : setBooks([titles])
-          console.log(titles);
+          // console.log(titles);
         } else {
           const notFound = () => {
             setIsLoading(false)
@@ -63,14 +63,11 @@ const App = () => {
   console.log(books)
 
   const searchBook = (book) => {
-    console.log(book)
     setBookSearch(book)
   }
 
-
   // More details
   const moreDetails = (id, imageLoadError) => {
-    // console.log(id);
     const info = books.filter((book, index) => index === id)
     setDetailedInfo({ ...info[0], imageLoadError })
   }
@@ -82,7 +79,7 @@ const App = () => {
         <Route path='/' exact render={(props) => (
           <>
             <Search onSearch={searchBook} />
-            {books.length !== 0 && <BooksGrid isLoading={isLoading} details={moreDetails} books={books} />}
+            <BooksGrid isLoading={isLoading} details={moreDetails} books={books} />
           </>
         )} />
         <Route path='/details' render={(props) => (

@@ -9,6 +9,7 @@ const Search = ({ onSearch }) => {
             alert('Please provide a book name to search for')
             return
         }
+
         onSearch(book)
         setBook('');
     }
